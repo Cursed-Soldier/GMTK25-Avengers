@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 220233447}
   - component: {fileID: 220233446}
   - component: {fileID: 220233445}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -926,7 +926,7 @@ GameObject:
   - component: {fileID: 365234333}
   - component: {fileID: 365234332}
   - component: {fileID: 365234331}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Spear
   m_TagString: Spear
   m_Icon: {fileID: 0}
@@ -1136,7 +1136,7 @@ GameObject:
   - component: {fileID: 401831859}
   - component: {fileID: 401831858}
   - component: {fileID: 401831857}
-  m_Layer: 11
+  m_Layer: 9
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1272,7 +1272,7 @@ GameObject:
   - component: {fileID: 476664564}
   - component: {fileID: 476664566}
   - component: {fileID: 476664567}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Spear Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1627,7 +1627,7 @@ MonoBehaviour:
   pickupRange: 1.5
   pickupLayer:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2048
   heldObjectExtendAmount: 2.2
 --- !u!1 &1480069909
 GameObject:
@@ -1674,7 +1674,7 @@ GameObject:
   - component: {fileID: 1634445980}
   - component: {fileID: 1634445981}
   - component: {fileID: 1634445982}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1856,7 +1856,7 @@ GameObject:
   - component: {fileID: 2105740725}
   - component: {fileID: 2105740726}
   - component: {fileID: 2105740727}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Jump Pad
   m_TagString: Jump Pad
   m_Icon: {fileID: 0}

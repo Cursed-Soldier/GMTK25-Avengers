@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Spear
+  - Jump Pad
   layers:
   - Default
   - TransparentFX
@@ -14,10 +16,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Walls
+  - Ground
+  - Throwables
+  - ElectricWall
   - 
   - 
   - 
