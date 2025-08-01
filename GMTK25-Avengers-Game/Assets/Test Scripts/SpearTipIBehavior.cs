@@ -13,7 +13,7 @@ public class SpearTipIBehavior : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Hit layer: " + other.gameObject.layer + " (" + LayerMask.LayerToName(other.gameObject.layer) + ")");
+        //Debug.Log("Hit layer: " + other.gameObject.layer + " (" + LayerMask.LayerToName(other.gameObject.layer) + ")");
 
         //check if the spear tip hit a wall
         if (other.gameObject.layer == LayerMask.NameToLayer("Walls"))

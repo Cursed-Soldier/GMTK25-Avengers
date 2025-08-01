@@ -8,7 +8,7 @@ public class JumpPad : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") || other.CompareTag("Spear") || other.CompareTag("Crate") || other.CompareTag("Bomb"))
         {
             Rigidbody2D rb = other.GetComponentInParent<Rigidbody2D>();
             if (rb != null)
