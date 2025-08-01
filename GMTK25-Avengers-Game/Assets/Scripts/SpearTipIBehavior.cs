@@ -25,8 +25,6 @@ public class SpearTipIBehavior : MonoBehaviour
                 rb.linearVelocity = Vector2.zero;
                 rb.angularVelocity = 0f;
                 rb.bodyType = RigidbodyType2D.Static;
-                /*Debug.Log("SpearShouldBeStuck");
-                spearRidgidBody.bodyType = RigidbodyType2D.Static;*/
             }
         }
     }

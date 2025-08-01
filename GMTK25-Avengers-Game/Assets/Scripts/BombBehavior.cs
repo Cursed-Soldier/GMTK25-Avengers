@@ -1,0 +1,25 @@
+using UnityEngine;
+
+public class BombBehavior : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        /*if (other.gameObject.CompareTag("ElectricWall"))
+        {
+            StartCoroutine();
+        }*/
+    }
+    //Bomb will only explode if it passes through the wall and gets charged
+    void 
+}

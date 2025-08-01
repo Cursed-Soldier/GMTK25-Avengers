@@ -20,6 +20,8 @@ public class TestPlayerMovement : MonoBehaviour
     void Update()
     {
         // Check if player is touching the ground
+        //IMPORTANT NEEDS TO BE ADDED TO MOVMENT SYSTEM
+        whatIsGround = LayerMask.GetMask("Ground", "Throwables");
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
         // Jump when pressing space and grounded

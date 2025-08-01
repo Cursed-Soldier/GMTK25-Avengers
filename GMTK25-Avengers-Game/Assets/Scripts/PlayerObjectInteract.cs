@@ -90,7 +90,15 @@ public class PlayerObjectInteract : MonoBehaviour
                     }
                 }
 
-                heldObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                //Reset Physics and Scale on Picked up stuff
+                heldObject.transform.rotation = Quaternion.identity;
+                heldObject.transform.localScale = heldObject.originalScale;
+                Rigidbody2D heldRB = heldObject.GetComponent<Rigidbody2D>();
+
+                heldRB.linearVelocity = Vector2.zero;
+                heldRB.angularVelocity = 0f;                   
+                heldRB.rotation = 0f;
+                heldRB.bodyType = RigidbodyType2D.Kinematic;
 
                 //Check if spear
                 if (heldObject.gameObject.CompareTag("Spear"))
