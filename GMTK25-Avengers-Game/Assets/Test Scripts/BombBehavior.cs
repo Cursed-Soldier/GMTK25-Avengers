@@ -21,5 +21,5 @@ public class BombBehavior : MonoBehaviour
         }*/
     }
     //Bomb will only explode if it passes through the wall and gets charged
-    void 
+    //void 
 }
