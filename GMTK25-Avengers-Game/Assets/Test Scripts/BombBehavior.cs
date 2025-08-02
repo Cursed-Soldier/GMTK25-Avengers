@@ -6,6 +6,9 @@ public class BombBehavior : MonoBehaviour
     public float explosionRadius;
     public float explosionAnimationDuration;
     public float timeBetweenChargeAndExplosion;
+
+    public AudioSource bombAudioSource;
+    public AudioClip explosionAudio;
     //public Collider2D blastRadius;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,6 +45,7 @@ public class BombBehavior : MonoBehaviour
 
 
         //Let Explosion cover sprites that will be destroyed
+        bombAudioSource.PlayOneShot(explosionAudio);
         yield return new WaitForSeconds(explosionAnimationDuration);
 
 
