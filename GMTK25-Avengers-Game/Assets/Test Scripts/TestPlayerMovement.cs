@@ -7,7 +7,7 @@ public class TestPlayerMovement : MonoBehaviour
     public float jumpForce = .02f;
     public Transform groundCheck;
     public float groundCheckRadius = .4f;
-    public LayerMask whatIsGround;
+    private LayerMask whatIsGround;
 
     private Rigidbody2D rb;
     private float moveInput;
@@ -26,20 +26,38 @@ public class TestPlayerMovement : MonoBehaviour
 
         if (gameObject.layer == LayerMask.NameToLayer("RightSidePlayer"))
         {
-            whatIsGround = LayerMask.GetMask("RightSideGround", "LeftSideThrowables");
+            //CheckGround
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask("RightSideGround"));
+            //IfGroundNotFound Check Throwable Layer
+            if (isGrounded == false)
+            {
+                isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask("RightSideThrowable"));
+            }
+
         }
         else if (gameObject.layer == LayerMask.NameToLayer("LeftSidePlayer"))
         {
-            whatIsGround = LayerMask.GetMask("LeftSideGround", "LeftSideThrowables");
+            //CheckGround
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask("LeftSideGround"));
+            //IfGroundNotFound Check Throwable Layer
+            if (isGrounded == false)
+            {
+                isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask("LeftSideThrowable"));
+            }
         }
 
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+        //Debug Testing
+        /*Collider2D[] hits = Physics2D.OverlapCircleAll(groundCheck.position, groundCheckRadius, whatIsGround);
+        if (hits.Length > 0) {
+            Debug.Log("Ground detect hit " + hits[0].gameObject.name);
+        }*/
 
         // Jump when pressing space and grounded
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            playerVars.playJumpAudio();
         }
 
         moveInput = Input.GetAxisRaw("Horizontal");

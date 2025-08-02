@@ -9,13 +9,20 @@ public class PlayerObjectInteract : MonoBehaviour
     public PlayerVariables playerVars;
 
     public float heldObjectExtendAmount;
-    private bool holdPointIsExtended = false;
+    public bool holdPointIsExtended = false;
 
     [HideInInspector]
     public ThrowableInteraction heldObject;
 
     void Update()
     {
+        if (heldObject == null && holdPointIsExtended == true)
+        {
+            holdPointIsExtended=false;
+            Vector3 pos = holdPoint.transform.position;
+            pos.x -= heldObjectExtendAmount;
+            holdPoint.transform.position = pos;
+        }
         //Try to pick up Object
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -46,7 +53,7 @@ public class PlayerObjectInteract : MonoBehaviour
                
                 
             }
-
+            playerVars.playThrowAudio();
             Vector2 throwDir = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
             heldObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             heldObject.Throw(throwDir);
@@ -59,7 +66,6 @@ public class PlayerObjectInteract : MonoBehaviour
 
     void TryPickup()
     {
-        Debug.Log("tryingToPick up");
         Collider2D[] hits;
         if (gameObject.layer == LayerMask.NameToLayer("LeftSidePlayer")) {
             hits = Physics2D.OverlapCircleAll(transform.position, pickupRange, leftSidepickupLayer);
@@ -71,7 +77,6 @@ public class PlayerObjectInteract : MonoBehaviour
 
             foreach (var hit in hits)
             {
-            Debug.Log("Something in Hits");
                 ThrowableInteraction to = hit.GetComponent<ThrowableInteraction>();
                 if (to != null)
                 {
@@ -115,6 +120,8 @@ public class PlayerObjectInteract : MonoBehaviour
                     if (heldObject.gameObject.CompareTag("Spear"))
                     {
                         heldObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                        heldObject.gameObject.GetComponent<PlatformEffector2D>().enabled = false;
+                        heldObject.gameObject.GetComponent<Collider2D>().usedByEffector = false;
 
                     }
 
