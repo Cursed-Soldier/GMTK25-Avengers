@@ -21,17 +21,45 @@ public class TeleporterLogic : MonoBehaviour
         if(isleftLevelTeleporter == true)
         {
             toTeleport.layer = LayerMask.NameToLayer("RightSidePlayer");
-            if(toTeleport.GetComponent<PlayerObjectInteract>().heldObject  != null )
+            SpriteRenderer sr = toTeleport.GetComponent<SpriteRenderer>();
+            sr.maskInteraction = SpriteMaskInteraction.VisibleInsideMask; 
+
+            //player is holding something
+            if (toTeleport.GetComponent<PlayerObjectInteract>().heldObject  != null )
             {
-                toTeleport.GetComponent<PlayerObjectInteract>().heldObject.gameObject.layer = LayerMask.NameToLayer("RightSideThrowable");
+                GameObject heldObject = toTeleport.GetComponent<PlayerObjectInteract>().heldObject.gameObject;
+                heldObject.layer = LayerMask.NameToLayer("RightSideThrowable");
+
+                SpriteRenderer itemsr = heldObject.GetComponent<SpriteRenderer>();
+                itemsr.maskInteraction = SpriteMaskInteraction.VisibleInsideMask;
+
+                if(heldObject.CompareTag("Spear"))
+                {
+                    GameObject speartip = heldObject.transform.GetChild(0).gameObject;
+                    speartip.layer = LayerMask.NameToLayer("RightSideThrowable");
+                }
             }
         }
         else
         {
             toTeleport.layer = LayerMask.NameToLayer("LeftSidePlayer");
+            SpriteRenderer sr = toTeleport.GetComponent<SpriteRenderer>();
+            sr.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+
+            //Player is holding something
             if (toTeleport.GetComponent<PlayerObjectInteract>().heldObject != null)
             {
-                toTeleport.GetComponent<PlayerObjectInteract>().heldObject.gameObject.layer = LayerMask.NameToLayer("LeftSideThrowable");
+                GameObject heldObject = toTeleport.GetComponent<PlayerObjectInteract>().heldObject.gameObject;
+                heldObject.layer = LayerMask.NameToLayer("LeftSideThrowable");
+
+                SpriteRenderer itemsr = heldObject.GetComponent<SpriteRenderer>();
+                itemsr.maskInteraction = SpriteMaskInteraction.VisibleOutsideMask;
+
+                if (heldObject.CompareTag("Spear"))
+                {
+                    GameObject speartip = heldObject.transform.GetChild(0).gameObject;
+                    speartip.layer = LayerMask.NameToLayer("LeftSideThrowable");
+                }
             }
         }
 
