@@ -374,5 +374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionRadius: 3
-  explosionAnimationDuration: 0.1
+  explosionAnimationDuration: 1
   timeBetweenChargeAndExplosion: 2
+  bombAudioSource: {fileID: 3622571990225298227}
+  explosionAudio: {fileID: 8300000, guid: 1d915aacbd1226646a5aec4fe7f86981, type: 3}

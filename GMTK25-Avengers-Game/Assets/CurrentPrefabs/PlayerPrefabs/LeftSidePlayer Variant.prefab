@@ -270,6 +270,12 @@ MonoBehaviour:
   jumpSoundEffect: {fileID: 8300000, guid: 7530794869fe5aa4aa10a6ff925adca9, type: 3}
   dragSoundEffect: {fileID: 8300000, guid: 6e34116c7c4a4b94ba7fdd4366da298e, type: 3}
   throwSoundEffect: {fileID: 8300000, guid: 42a8dfbd28e621e4eb8004c60aab381c, type: 3}
+  MaxStepAudioSize: 0.2
+  stepSoundEffects:
+  - {fileID: 8300000, guid: c403d90f5f1219f4a93c3ecd8d5883f1, type: 3}
+  - {fileID: 8300000, guid: 67c3500e42074654493b0b027f2555e6, type: 3}
+  - {fileID: 8300000, guid: 67db914eac8e9b64f874a13c5cecb75d, type: 3}
+  - {fileID: 8300000, guid: 00ce8d181cb1275439310334dceb2ff0, type: 3}
 --- !u!82 &786170360382444082
 AudioSource:
   m_ObjectHideFlags: 0
