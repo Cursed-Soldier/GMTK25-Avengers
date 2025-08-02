@@ -12,12 +12,17 @@ public class TestPlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private float moveInput;
-    private bool isGrounded;
+    [SerializeField] private bool isGrounded;
     public PlayerVariables playerVars;
+
+    private Animator anim;
+    private bool jump = false;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -53,22 +58,39 @@ public class TestPlayerMovement : MonoBehaviour
             Debug.Log("Ground detect hit " + hits[0].gameObject.name);
         }*/
 
+        // Check if falling
+        if (jump && isGrounded)
+        {
+            jump = false;
+            anim.SetBool("Jump", jump);
+            
+        }
+
         // Jump when pressing space and grounded
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             playerVars.playJumpAudio();
+            jump = true;
+            anim.SetBool("Jump", jump);
+            Debug.Log("jumping");
         }
 
+        
+
+
         moveInput = Input.GetAxisRaw("Horizontal");
+        anim.SetBool("Grounded", isGrounded);
+
 
         //Flip Charecter based on direction
         if (moveInput != 0 && playerVars.isMovingWall == false)
         {
             Vector3 scale = transform.localScale;
             scale.x = Mathf.Sign(moveInput) * Mathf.Abs(scale.x);
-            transform.localScale = scale;
+            //transform.localScale = scale;
+            anim.SetFloat("FacingX", moveInput);
         }
 
         //Play Audio If player is grounded and moving 
@@ -88,6 +110,7 @@ public class TestPlayerMovement : MonoBehaviour
         else
         {
             rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+            anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
         }
     }
 

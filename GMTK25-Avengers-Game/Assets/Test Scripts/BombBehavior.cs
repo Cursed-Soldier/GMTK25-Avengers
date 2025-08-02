@@ -6,14 +6,12 @@ public class BombBehavior : MonoBehaviour
     public float explosionRadius;
     public float explosionAnimationDuration;
     public float timeBetweenChargeAndExplosion;
-
-    public AudioSource bombAudioSource;
-    public AudioClip explosionAudio;
+    private Animator anim;
     //public Collider2D blastRadius;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        anim = GetComponentInParent<Animator>();
     }
 
     // Update is called once per frame
@@ -45,7 +43,6 @@ public class BombBehavior : MonoBehaviour
 
 
         //Let Explosion cover sprites that will be destroyed
-        bombAudioSource.PlayOneShot(explosionAudio);
         yield return new WaitForSeconds(explosionAnimationDuration);
 
 
@@ -57,7 +54,10 @@ public class BombBehavior : MonoBehaviour
             }
         }
 
-        Destroy(transform.parent.gameObject);
+        anim.SetBool("Explode", true);
+
+
+        Destroy(transform.parent.gameObject, 1f);
     }
 
 }
