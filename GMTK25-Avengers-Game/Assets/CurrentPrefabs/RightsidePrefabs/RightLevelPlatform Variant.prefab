@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8811236770265354096
+--- !u!1001 &7316872823755312846
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -18,11 +18,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 57305907900718221, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.979
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 57305907900718221, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.8741403
+      value: -7.4
       objectReference: {fileID: 0}
     - target: {fileID: 57305907900718221, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -58,23 +58,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5916713098070462482, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_Name
-      value: LeftLevelGround Variant
+      value: RightLevelGround Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5916713098070462482, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_Layer
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6221729648133498900, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_Size.x
-      value: 1
+      value: 1.9967155
       objectReference: {fileID: 0}
     - target: {fileID: 6221729648133498900, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_Size.y
-      value: 1
+      value: 0.5173788
       objectReference: {fileID: 0}
     - target: {fileID: 6221729648133498900, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_Offset.x
-      value: 0
+      value: -0.0052461624
       objectReference: {fileID: 0}
     - target: {fileID: 6221729648133498900, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_Offset.y
@@ -86,20 +86,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6221729648133498900, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6221729648133498900, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6539445558576457948, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_Size.x
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6539445558576457948, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 78cf37a0549988e4c997aa149e99afca, type: 3}
+      objectReference: {fileID: 21300000, guid: d7a35dc80e15e9040826e2f9f6fc8f7c, type: 3}
     - target: {fileID: 6539445558576457948, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -118,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6539445558576457948, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_MaskInteraction
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
