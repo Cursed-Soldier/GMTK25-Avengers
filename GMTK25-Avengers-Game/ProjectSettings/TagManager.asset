@@ -11,6 +11,9 @@ TagManager:
   - Bomb
   - Big Rock
   - Electric Wall
+  - GrabPointTrigger
+  - LeftLevelMask
+  - RightLevelMask
   layers:
   - Default
   - TransparentFX
@@ -21,22 +24,22 @@ TagManager:
   - 
   - 
   - 
-  - Walls
-  - Ground
-  - Throwables
+  - 
+  - 
+  - 
   - ElectricWall
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - LeftSidePlayer
+  - RightSidePlayer
+  - LeftSideThrowable
+  - RightSideThrowable
+  - LeftSideGround
+  - RightSideGround
+  - LeftSideWalls
+  - RightSideWalls
+  - LeftSideDefault
+  - RightsideDefault
   - 
   - 
   - 

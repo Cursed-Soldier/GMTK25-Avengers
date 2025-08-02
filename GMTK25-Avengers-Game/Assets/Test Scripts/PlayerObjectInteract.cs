@@ -4,20 +4,22 @@ public class PlayerObjectInteract : MonoBehaviour
 {
     public Transform holdPoint; // Empty GameObject where held item will stay
     public float pickupRange = 1.5f;
-    public LayerMask pickupLayer;
+    public LayerMask leftSidepickupLayer;
+    public LayerMask rightSidepickupLayer;
+    public PlayerVariables playerVars;
 
-    
     public float heldObjectExtendAmount;
     private bool holdPointIsExtended = false;
 
-    private ThrowableInteraction heldObject;
+    [HideInInspector]
+    public ThrowableInteraction heldObject;
 
     void Update()
     {
         //Try to pick up Object
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (heldObject == null)
+            if (heldObject == null && playerVars.isMovingWall != true)
                 TryPickup();
             else
                 Drop();
@@ -51,67 +53,77 @@ public class PlayerObjectInteract : MonoBehaviour
             //Fix scaling
             heldObject.transform.localScale = heldObject.originalScale;
             heldObject = null;
+            playerVars.isHoldingItem = false;
         }
     }
 
     void TryPickup()
     {
-        
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, pickupRange, pickupLayer);
-
-        foreach (var hit in hits)
-        {
-            ThrowableInteraction to = hit.GetComponent<ThrowableInteraction>();
-            if (to != null)
-            {
-                heldObject = to;
-
-                //Check size of Held Object and Adjust position relative to player
-                if(heldObject.gameObject.GetComponent<ThrowableInteraction>().isLargeItem == true)
-                //Throwable is large
-                {
-                    if(holdPointIsExtended == false)
-                    {
-                        holdPointIsExtended = true;
-                        Vector3 pos = holdPoint.transform.position;
-                        pos.x += heldObjectExtendAmount;
-                        holdPoint.transform.position = pos;
-                    }
-                }
-                //Throwable is small
-                else
-                {
-                    if (holdPointIsExtended == true)
-                    {
-                        holdPointIsExtended = false;
-                        Vector3 pos = holdPoint.transform.position;
-                        pos.x -= heldObjectExtendAmount;
-                        holdPoint.transform.position = pos; 
-                    }
-                }
-
-                //Reset Physics and Scale on Picked up stuff
-                heldObject.transform.rotation = Quaternion.identity;
-                heldObject.transform.localScale = heldObject.originalScale;
-                Rigidbody2D heldRB = heldObject.GetComponent<Rigidbody2D>();
-
-                heldRB.linearVelocity = Vector2.zero;
-                heldRB.angularVelocity = 0f;                   
-                heldRB.rotation = 0f;
-                heldRB.bodyType = RigidbodyType2D.Kinematic;
-
-                //Check if spear
-                if (heldObject.gameObject.CompareTag("Spear"))
-                {
-                    heldObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
-
-                }
-
-                heldObject.transform.SetParent(holdPoint, true);
-                heldObject.transform.position = holdPoint.position;
-                break;
-            }
+        Debug.Log("tryingToPick up");
+        Collider2D[] hits;
+        if (gameObject.layer == LayerMask.NameToLayer("LeftSidePlayer")) {
+            hits = Physics2D.OverlapCircleAll(transform.position, pickupRange, leftSidepickupLayer);
         }
+        else
+        {
+            hits = Physics2D.OverlapCircleAll(transform.position, pickupRange, rightSidepickupLayer);
+        }
+
+            foreach (var hit in hits)
+            {
+            Debug.Log("Something in Hits");
+                ThrowableInteraction to = hit.GetComponent<ThrowableInteraction>();
+                if (to != null)
+                {
+                    heldObject = to;
+
+                    //Check size of Held Object and Adjust position relative to player
+                    if (heldObject.gameObject.GetComponent<ThrowableInteraction>().isLargeItem == true)
+                    //Throwable is large
+                    {
+                        if (holdPointIsExtended == false)
+                        {
+                            holdPointIsExtended = true;
+                            Vector3 pos = holdPoint.transform.position;
+                            pos.x += heldObjectExtendAmount;
+                            holdPoint.transform.position = pos;
+                        }
+                    }
+                    //Throwable is small
+                    else
+                    {
+                        if (holdPointIsExtended == true)
+                        {
+                            holdPointIsExtended = false;
+                            Vector3 pos = holdPoint.transform.position;
+                            pos.x -= heldObjectExtendAmount;
+                            holdPoint.transform.position = pos;
+                        }
+                    }
+
+                    //Reset Physics and Scale on Picked up stuff
+                    heldObject.transform.rotation = Quaternion.identity;
+                    heldObject.transform.localScale = heldObject.originalScale;
+                    Rigidbody2D heldRB = heldObject.GetComponent<Rigidbody2D>();
+
+                    heldRB.linearVelocity = Vector2.zero;
+                    heldRB.angularVelocity = 0f;
+                    heldRB.rotation = 0f;
+                    heldRB.bodyType = RigidbodyType2D.Kinematic;
+
+                    //Check if spear
+                    if (heldObject.gameObject.CompareTag("Spear"))
+                    {
+                        heldObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+
+                    }
+
+                    heldObject.transform.SetParent(holdPoint, true);
+                    heldObject.transform.position = holdPoint.position;
+                    playerVars.isHoldingItem = true;
+                    break;
+                }
+            }
     }
 
     void Drop()
@@ -121,6 +133,7 @@ public class PlayerObjectInteract : MonoBehaviour
             heldObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             heldObject.transform.SetParent(null);
             heldObject = null;
+            playerVars.isHoldingItem = false;
         }
     }
 

@@ -3,6 +3,7 @@ using UnityEngine;
 public class TestPlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
+    public float dragSlowMultiplier = 0.5f;
     public float jumpForce = .02f;
     public Transform groundCheck;
     public float groundCheckRadius = .4f;
@@ -11,6 +12,7 @@ public class TestPlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private float moveInput;
     private bool isGrounded;
+    public PlayerVariables playerVars;
 
     void Start()
     {
@@ -21,7 +23,16 @@ public class TestPlayerMovement : MonoBehaviour
     {
         // Check if player is touching the ground
         //IMPORTANT NEEDS TO BE ADDED TO MOVMENT SYSTEM
-        whatIsGround = LayerMask.GetMask("Ground", "Throwables");
+
+        if (gameObject.layer == LayerMask.NameToLayer("RightSidePlayer"))
+        {
+            whatIsGround = LayerMask.GetMask("RightSideGround", "LeftSideThrowables");
+        }
+        else if (gameObject.layer == LayerMask.NameToLayer("LeftSidePlayer"))
+        {
+            whatIsGround = LayerMask.GetMask("LeftSideGround", "LeftSideThrowables");
+        }
+
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
 
         // Jump when pressing space and grounded
@@ -33,7 +44,8 @@ public class TestPlayerMovement : MonoBehaviour
 
         moveInput = Input.GetAxisRaw("Horizontal");
 
-        if (moveInput != 0)
+        //Flip Charecter based on direction
+        if (moveInput != 0 && playerVars.isMovingWall == false)
         {
             Vector3 scale = transform.localScale;
             scale.x = Mathf.Sign(moveInput) * Mathf.Abs(scale.x);
@@ -43,6 +55,15 @@ public class TestPlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        if (playerVars.isMovingWall)
+        {
+            rb.linearVelocity = new Vector2(moveInput * moveSpeed * dragSlowMultiplier, rb.linearVelocity.y);
+        }
+        else
+        {
+            rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
+        }
     }
-}
+
+
+    }

@@ -16,7 +16,18 @@ public class SpearTipIBehavior : MonoBehaviour
         //Debug.Log("Hit layer: " + other.gameObject.layer + " (" + LayerMask.LayerToName(other.gameObject.layer) + ")");
 
         //check if the spear tip hit a wall
-        if (other.gameObject.layer == LayerMask.NameToLayer("Walls"))
+        if (gameObject.layer == LayerMask.NameToLayer("LeftSideThrowable") && other.gameObject.layer == LayerMask.NameToLayer("LeftSideWalls"))
+        {
+            Rigidbody2D rb = transform.root.GetComponent<Rigidbody2D>();
+
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+                rb.bodyType = RigidbodyType2D.Static;
+            }
+        }
+        else if (gameObject.layer == LayerMask.NameToLayer("RightSideThrowable") && other.gameObject.layer == LayerMask.NameToLayer("RightSideWalls"))
         {
             Rigidbody2D rb = transform.root.GetComponent<Rigidbody2D>();
 
