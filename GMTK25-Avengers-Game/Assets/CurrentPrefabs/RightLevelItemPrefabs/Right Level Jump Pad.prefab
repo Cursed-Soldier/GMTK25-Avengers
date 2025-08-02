@@ -8,6 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1943100073807162739, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346163291452528828, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
+      propertyPath: m_Size.y
+      value: 0.25717032
+      objectReference: {fileID: 0}
+    - target: {fileID: 2346163291452528828, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.06395227
+      objectReference: {fileID: 0}
+    - target: {fileID: 4126981895520935788, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
+      propertyPath: m_Mass
+      value: 0.25717032
+      objectReference: {fileID: 0}
     - target: {fileID: 5455448604380913575, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
       propertyPath: m_Name
       value: Right Level Jump Pad
@@ -15,6 +31,14 @@ PrefabInstance:
     - target: {fileID: 5455448604380913575, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
       propertyPath: m_Layer
       value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6496687907167066717, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6496687907167066717, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6496687907167066717, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
       propertyPath: m_LocalPosition.x
@@ -55,6 +79,26 @@ PrefabInstance:
     - target: {fileID: 6496687907167066717, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718495304895726864, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.089
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870937280364949158, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5508725064705088119, guid: b85d8849a1b708a49abda7c37e674f7e, type: 3}
+    - target: {fileID: 7870937280364949158, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870937280364949158, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7870937280364949158, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7870937280364949158, guid: 1917206f27b4cb8489df1079920d3865, type: 3}
       propertyPath: m_MaskInteraction
