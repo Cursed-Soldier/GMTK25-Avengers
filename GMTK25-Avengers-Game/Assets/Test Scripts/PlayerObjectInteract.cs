@@ -9,13 +9,20 @@ public class PlayerObjectInteract : MonoBehaviour
     public PlayerVariables playerVars;
 
     public float heldObjectExtendAmount;
-    private bool holdPointIsExtended = false;
+    public bool holdPointIsExtended = false;
 
     [HideInInspector]
     public ThrowableInteraction heldObject;
 
     void Update()
     {
+        if (heldObject == null && holdPointIsExtended == true)
+        {
+            holdPointIsExtended=false;
+            Vector3 pos = holdPoint.transform.position;
+            pos.x -= heldObjectExtendAmount;
+            holdPoint.transform.position = pos;
+        }
         //Try to pick up Object
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -46,7 +53,7 @@ public class PlayerObjectInteract : MonoBehaviour
                
                 
             }
-
+            playerVars.playThrowAudio();
             Vector2 throwDir = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
             heldObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             heldObject.Throw(throwDir);

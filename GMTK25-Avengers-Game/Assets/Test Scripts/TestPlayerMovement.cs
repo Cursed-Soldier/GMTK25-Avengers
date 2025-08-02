@@ -57,6 +57,7 @@ public class TestPlayerMovement : MonoBehaviour
         {
             
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            playerVars.playJumpAudio();
         }
 
         moveInput = Input.GetAxisRaw("Horizontal");

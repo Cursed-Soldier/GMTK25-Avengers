@@ -12,12 +12,14 @@ public class PlayerGrabLightWallControler : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && currentWall != null && playerVars.isHoldingItem == false && playerVars.isMovingWall == false)
         {
             playerVars.isMovingWall = true;
+            playerVars.playDragAudio();
             currentWall.StartDragging(transform); 
         }
 
         if (Input.GetKeyUp(KeyCode.E) && currentWall != null && playerVars.isHoldingItem == false)
         {
             playerVars.isMovingWall = false;
+            playerVars.stopAudio();
             currentWall.StopDragging();
         }
     }
