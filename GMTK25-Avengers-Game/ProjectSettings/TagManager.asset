@@ -51,5 +51,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: wall_of_light
+    uniqueID: 730574759
+    locked: 0
+  - name: player
+    uniqueID: 3530439583
+    locked: 0
+  - name: foreground
+    uniqueID: 3609231825
+    locked: 0
   m_RenderingLayers:
   - Default
