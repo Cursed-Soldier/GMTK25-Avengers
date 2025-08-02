@@ -7,6 +7,10 @@ public class BombBehavior : MonoBehaviour
     public float explosionAnimationDuration;
     public float timeBetweenChargeAndExplosion;
     private Animator anim;
+
+    public AudioSource bombAudioSource;
+    public AudioClip explosionAudio;
+
     //public Collider2D blastRadius;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,10 +45,17 @@ public class BombBehavior : MonoBehaviour
         //Delete self and all explodable objects withing range
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
 
+        
+
+
+        anim.SetBool("Explode", true);
 
         //Let Explosion cover sprites that will be destroyed
-        yield return new WaitForSeconds(explosionAnimationDuration);
+        yield return new WaitForSeconds(explosionAnimationDuration * .5f);
 
+        bombAudioSource.PlayOneShot(explosionAudio);
+
+        yield return new WaitForSeconds(explosionAnimationDuration * .5f);
 
         foreach (Collider2D X in hits)
         {
@@ -53,9 +64,6 @@ public class BombBehavior : MonoBehaviour
                 Destroy(X.gameObject);
             }
         }
-
-        anim.SetBool("Explode", true);
-
 
         Destroy(transform.parent.gameObject, 1f);
     }
