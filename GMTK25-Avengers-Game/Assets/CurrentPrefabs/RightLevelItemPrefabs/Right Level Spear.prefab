@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2269606954240768560}
   - component: {fileID: 2367574668172692154}
   - component: {fileID: 478587769031734420}
-  - component: {fileID: 3773552968345970181}
   - component: {fileID: 6857043219249974303}
   m_Layer: 18
   m_Name: Spear Tip
@@ -69,8 +68,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.053583447, y: 0.2328948}
-  m_Size: {x: 2.821825, y: 1.0437809}
+  m_Offset: {x: 0.053583447, y: -1.0337433}
+  m_Size: {x: 2.821825, y: 2.6916406}
   m_Direction: 0
 --- !u!212 &478587769031734420
 SpriteRenderer:
@@ -127,33 +126,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 2
   m_SpriteSortPoint: 0
---- !u!50 &3773552968345970181
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2629934725894478687}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &6857043219249974303
 MonoBehaviour:
   m_ObjectHideFlags: 0

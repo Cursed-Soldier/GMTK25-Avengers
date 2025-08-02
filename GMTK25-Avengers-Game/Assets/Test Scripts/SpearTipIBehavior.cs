@@ -33,6 +33,9 @@ public class SpearTipIBehavior : MonoBehaviour
                 effector.enabled = true;
                 shaftCollider.usedByEffector = true;
             }
+
+            float zRot = transform.parent.transform.eulerAngles.z;
+            effector.rotationalOffset = zRot *-1;
         }
         else if (gameObject.layer == LayerMask.NameToLayer("RightSideThrowable") && other.gameObject.layer == LayerMask.NameToLayer("RightSideWalls"))
         {
@@ -46,6 +49,9 @@ public class SpearTipIBehavior : MonoBehaviour
                 effector.enabled = true;
                 shaftCollider.usedByEffector = true;
             }
+
+            float zRot = transform.parent.transform.eulerAngles.z;
+            effector.rotationalOffset = zRot *-1;
         }
     }
     

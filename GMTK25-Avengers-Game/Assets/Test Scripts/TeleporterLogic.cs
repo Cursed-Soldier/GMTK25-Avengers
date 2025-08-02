@@ -38,6 +38,11 @@ public class TeleporterLogic : MonoBehaviour
                     GameObject speartip = heldObject.transform.GetChild(0).gameObject;
                     speartip.layer = LayerMask.NameToLayer("RightSideThrowable");
                 }
+                else if (heldObject.CompareTag("Jump Pad"))
+                {
+                    GameObject jumpTrigger = heldObject.transform.GetChild(0).gameObject;
+                    jumpTrigger.layer = LayerMask.NameToLayer("RightSideThrowable");
+                }
             }
         }
         else
@@ -59,6 +64,11 @@ public class TeleporterLogic : MonoBehaviour
                 {
                     GameObject speartip = heldObject.transform.GetChild(0).gameObject;
                     speartip.layer = LayerMask.NameToLayer("LeftSideThrowable");
+                }
+                else if (heldObject.CompareTag("Jump Pad")) 
+                {
+                    GameObject jumpTrigger = heldObject.transform.GetChild(0).gameObject;
+                    jumpTrigger.layer = LayerMask.NameToLayer("LeftSideThrowable");
                 }
             }
         }
