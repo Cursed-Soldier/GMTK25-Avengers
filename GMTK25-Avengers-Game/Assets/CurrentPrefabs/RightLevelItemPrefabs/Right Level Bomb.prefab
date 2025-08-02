@@ -194,8 +194,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7132448922155116557, guid: c108d52d78232274289e78a652131ae4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: -2413806693520163455, guid: fc0368d331c47d04c9df858e8ef91d6a, type: 3}
+  m_Color: {r: 0.27044016, g: 0.1420236, b: 0.1420236, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -257,9 +257,6 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-<<<<<<< Updated upstream
-  m_Radius: 0.25
-=======
   m_Radius: 0.5
 --- !u!82 &340710739831899209
 AudioSource:
@@ -358,7 +355,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
