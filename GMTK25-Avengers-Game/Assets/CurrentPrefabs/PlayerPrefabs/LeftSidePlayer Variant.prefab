@@ -112,6 +112,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6680002539964237927}
     - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
+      propertyPath: groundCheckRadius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
       propertyPath: whatIsGround.m_Bits
       value: 0
       objectReference: {fileID: 0}
@@ -170,6 +174,10 @@ PrefabInstance:
     - target: {fileID: 4642139764982228345, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
       propertyPath: rightSidepickupLayer.m_Bits
       value: 262144
+      objectReference: {fileID: 0}
+    - target: {fileID: 5592165590316136544, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.499
       objectReference: {fileID: 0}
     - target: {fileID: 7142543338397076212, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
       propertyPath: m_MaskInteraction

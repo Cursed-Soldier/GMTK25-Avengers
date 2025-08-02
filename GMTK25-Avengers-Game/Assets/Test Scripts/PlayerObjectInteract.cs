@@ -59,7 +59,6 @@ public class PlayerObjectInteract : MonoBehaviour
 
     void TryPickup()
     {
-        Debug.Log("tryingToPick up");
         Collider2D[] hits;
         if (gameObject.layer == LayerMask.NameToLayer("LeftSidePlayer")) {
             hits = Physics2D.OverlapCircleAll(transform.position, pickupRange, leftSidepickupLayer);
@@ -71,7 +70,6 @@ public class PlayerObjectInteract : MonoBehaviour
 
             foreach (var hit in hits)
             {
-            Debug.Log("Something in Hits");
                 ThrowableInteraction to = hit.GetComponent<ThrowableInteraction>();
                 if (to != null)
                 {
@@ -115,6 +113,8 @@ public class PlayerObjectInteract : MonoBehaviour
                     if (heldObject.gameObject.CompareTag("Spear"))
                     {
                         heldObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                        heldObject.gameObject.GetComponent<PlatformEffector2D>().enabled = false;
+                        heldObject.gameObject.GetComponent<Collider2D>().usedByEffector = false;
 
                     }
 

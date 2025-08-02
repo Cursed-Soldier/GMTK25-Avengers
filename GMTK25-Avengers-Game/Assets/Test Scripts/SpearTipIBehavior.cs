@@ -4,9 +4,14 @@ public class SpearTipIBehavior : MonoBehaviour
 {
     private Collider2D spearTip;
     private Rigidbody2D spearRidgidBody;
+
+    public Collider2D shaftCollider;
+    public PlatformEffector2D effector;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        effector.enabled = false;
+        shaftCollider.usedByEffector = false;
         spearTip = gameObject.GetComponent<Collider2D>();
         spearRidgidBody = gameObject.GetComponentInParent<Rigidbody2D>();
     }
@@ -25,6 +30,8 @@ public class SpearTipIBehavior : MonoBehaviour
                 rb.linearVelocity = Vector2.zero;
                 rb.angularVelocity = 0f;
                 rb.bodyType = RigidbodyType2D.Static;
+                effector.enabled = true;
+                shaftCollider.usedByEffector = true;
             }
         }
         else if (gameObject.layer == LayerMask.NameToLayer("RightSideThrowable") && other.gameObject.layer == LayerMask.NameToLayer("RightSideWalls"))
@@ -36,6 +43,8 @@ public class SpearTipIBehavior : MonoBehaviour
                 rb.linearVelocity = Vector2.zero;
                 rb.angularVelocity = 0f;
                 rb.bodyType = RigidbodyType2D.Static;
+                effector.enabled = true;
+                shaftCollider.usedByEffector = true;
             }
         }
     }
