@@ -14,7 +14,11 @@ GameObject:
   - component: {fileID: 771904154365334490}
   - component: {fileID: 5981135959582741358}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   - component: {fileID: 4897018540466379393}
+=======
+  - component: {fileID: 3622571990225298227}
+>>>>>>> Stashed changes
 =======
   - component: {fileID: 3622571990225298227}
 >>>>>>> Stashed changes
@@ -184,6 +188,9 @@ Animator:
   m_Radius: 0.5
 --- !u!82 &3622571990225298227
 AudioSource:
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,6 +198,7 @@ AudioSource:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5965044533927120637}
   m_Enabled: 1
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 7a2b3492bc9d00442b8c57800c177aec, type: 2}
@@ -206,6 +214,8 @@ AudioSource:
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
 =======
+=======
+>>>>>>> Stashed changes
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -295,6 +305,9 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &8675422061859602547
 GameObject:
