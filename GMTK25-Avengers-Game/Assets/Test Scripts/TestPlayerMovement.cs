@@ -8,6 +8,7 @@ public class TestPlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float groundCheckRadius = .4f;
     private LayerMask whatIsGround;
+    private float nextStepTime = 0;
 
     private Rigidbody2D rb;
     private float moveInput;
@@ -68,6 +69,13 @@ public class TestPlayerMovement : MonoBehaviour
             Vector3 scale = transform.localScale;
             scale.x = Mathf.Sign(moveInput) * Mathf.Abs(scale.x);
             transform.localScale = scale;
+        }
+
+        //Play Audio If player is grounded and moving 
+        if (isGrounded && rb.linearVelocity.magnitude > 0.1f && Time.time > nextStepTime)
+        {
+            playerVars.playWalkingAudio();
+            nextStepTime = Time.time + playerVars.MaxStepAudioSize;
         }
     }
 

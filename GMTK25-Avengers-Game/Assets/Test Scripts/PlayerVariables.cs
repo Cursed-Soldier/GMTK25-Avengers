@@ -15,6 +15,9 @@ public class PlayerVariables : MonoBehaviour
     public AudioClip dragSoundEffect;
     public AudioClip throwSoundEffect;
 
+    public float MaxStepAudioSize;
+    public AudioClip[] stepSoundEffects;
+
 
     public void playJumpAudio()
     {
@@ -23,7 +26,9 @@ public class PlayerVariables : MonoBehaviour
 
     public void playWalkingAudio()
     {
-        //playerAudioSource.PlayOneShot(
+        //pick a random step
+        int index = Random.Range(0, stepSoundEffects.Length);
+        playerAudioSource.PlayOneShot(stepSoundEffects[index]);
     }
 
     public void playThrowAudio()
