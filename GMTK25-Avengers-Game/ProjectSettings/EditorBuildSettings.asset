@@ -8,8 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/TitleScreen.unity
     guid: f540a80a26c1a2e40aa78919058e1238
-  - enabled: 1
+  - enabled: 0
     path: Assets/Levels/FinalLevel.unity
     guid: 17b03f90148887944916c3f603b53793
+  - enabled: 1
+    path: Assets/Levels/FinalLevelRework.unity
+    guid: abee0b30be53df047be2bcab759c64f8
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
