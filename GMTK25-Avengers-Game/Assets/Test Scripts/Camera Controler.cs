@@ -6,6 +6,7 @@ public class CameraControler : MonoBehaviour
     private Transform playerT;      
     public float xOffset = 0f;    
     public float zOffset = -10f;  
+    public float yOffset = 0f;
 
     void Start()
     {
@@ -14,7 +15,7 @@ public class CameraControler : MonoBehaviour
 
     void LateUpdate()
     {
-        Vector3 newPos = new Vector3(xOffset, playerT.position.y, zOffset);
+        Vector3 newPos = new Vector3(xOffset, playerT.position.y + yOffset, zOffset);
         transform.position = newPos;
     }
 }
