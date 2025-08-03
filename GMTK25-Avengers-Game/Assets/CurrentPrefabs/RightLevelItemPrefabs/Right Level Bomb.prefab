@@ -84,6 +84,8 @@ MonoBehaviour:
   explosionRadius: 3
   explosionAnimationDuration: 0.3
   timeBetweenChargeAndExplosion: 2
+  bombAudioSource: {fileID: 340710739831899209}
+  explosionAudio: {fileID: 8300000, guid: 1d915aacbd1226646a5aec4fe7f86981, type: 3}
 --- !u!1 &1712286870794823767
 GameObject:
   m_ObjectHideFlags: 0
@@ -98,6 +100,7 @@ GameObject:
   - component: {fileID: 2793845697648203387}
   - component: {fileID: 1430582067254425213}
   - component: {fileID: 340710739831899209}
+  - component: {fileID: 7419705070733463899}
   m_Layer: 18
   m_Name: Right Level Bomb
   m_TagString: Bomb
@@ -353,3 +356,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &7419705070733463899
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712286870794823767}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7a2b3492bc9d00442b8c57800c177aec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

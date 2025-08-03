@@ -56,6 +56,8 @@ public class BombBehavior : MonoBehaviour
         bombAudioSource.PlayOneShot(explosionAudio);
 
         yield return new WaitForSeconds(explosionAnimationDuration * .5f);
+        yield return new WaitForSeconds(explosionAnimationDuration * .5f);
+        yield return new WaitForSeconds(explosionAnimationDuration * .5f);
 
         foreach (Collider2D X in hits)
         {

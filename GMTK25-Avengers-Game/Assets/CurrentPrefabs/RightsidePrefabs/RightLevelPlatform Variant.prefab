@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5916713098070462482, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_Name
-      value: RightLevelGround Variant
+      value: RightLevelPlatform Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5916713098070462482, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_Layer
@@ -102,11 +102,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: d7a35dc80e15e9040826e2f9f6fc8f7c, type: 3}
     - target: {fileID: 6539445558576457948, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.36163503
       objectReference: {fileID: 0}
     - target: {fileID: 6539445558576457948, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.36163503
       objectReference: {fileID: 0}
     - target: {fileID: 6539445558576457948, guid: e4dcc73278ac35e47a4e6b1a346ba92d, type: 3}
       propertyPath: m_Color.r

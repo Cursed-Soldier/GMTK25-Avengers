@@ -74,7 +74,7 @@ public class TestPlayerMovement : MonoBehaviour
             playerVars.playJumpAudio();
             jump = true;
             anim.SetBool("Jump", jump);
-            Debug.Log("jumping");
+            //Debug.Log("jumping");
         }
 
         
@@ -89,8 +89,8 @@ public class TestPlayerMovement : MonoBehaviour
         {
             Vector3 scale = transform.localScale;
             scale.x = Mathf.Sign(moveInput) * Mathf.Abs(scale.x);
-            //transform.localScale = scale;
-            anim.SetFloat("FacingX", moveInput);
+            transform.localScale = scale;
+            //anim.SetFloat("FacingX", moveInput);
         }
 
         //Play Audio If player is grounded and moving 

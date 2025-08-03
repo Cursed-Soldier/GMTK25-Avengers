@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class GroundButtonTrigger : MonoBehaviour
 {
+    public AudioClip buttonSound;
+    public AudioSource buttonSoundSource;
+
     public float requireMassToTrigger;
     private float currentMassOnButton = 0;
     public bool isActive = false;
@@ -11,6 +14,7 @@ public class GroundButtonTrigger : MonoBehaviour
         if(currentMassOnButton >= requireMassToTrigger)
         {
             isActive = true;
+
         }
         else
         {
@@ -24,6 +28,7 @@ public class GroundButtonTrigger : MonoBehaviour
         if (rb != null)
         {
             currentMassOnButton += rb.mass;
+            buttonSoundSource.PlayOneShot(buttonSound);
         }
     }
 

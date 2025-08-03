@@ -4,6 +4,8 @@ public class SpearTipIBehavior : MonoBehaviour
 {
     private Collider2D spearTip;
     private Rigidbody2D spearRidgidBody;
+    //[HideInInspector]
+    public bool isHeld = false;
 
     public Collider2D shaftCollider;
     public PlatformEffector2D effector;
@@ -21,7 +23,7 @@ public class SpearTipIBehavior : MonoBehaviour
         //Debug.Log("Hit layer: " + other.gameObject.layer + " (" + LayerMask.LayerToName(other.gameObject.layer) + ")");
 
         //check if the spear tip hit a wall
-        if (gameObject.layer == LayerMask.NameToLayer("LeftSideThrowable") && other.gameObject.layer == LayerMask.NameToLayer("LeftSideWalls"))
+        if (gameObject.layer == LayerMask.NameToLayer("LeftSideThrowable") && other.gameObject.layer == LayerMask.NameToLayer("LeftSideWalls") && isHeld == false)
         {
             Rigidbody2D rb = transform.root.GetComponent<Rigidbody2D>();
 
@@ -37,7 +39,7 @@ public class SpearTipIBehavior : MonoBehaviour
             float zRot = transform.parent.transform.eulerAngles.z;
             effector.rotationalOffset = zRot *-1;
         }
-        else if (gameObject.layer == LayerMask.NameToLayer("RightSideThrowable") && other.gameObject.layer == LayerMask.NameToLayer("RightSideWalls"))
+        else if (gameObject.layer == LayerMask.NameToLayer("RightSideThrowable") && other.gameObject.layer == LayerMask.NameToLayer("RightSideWalls") && isHeld == false)
         {
             Rigidbody2D rb = transform.root.GetComponent<Rigidbody2D>();
 

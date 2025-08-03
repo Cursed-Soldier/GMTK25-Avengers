@@ -3,7 +3,10 @@ using UnityEngine;
 public class ItemSpawnerController : MonoBehaviour
 {
     public bool isActivated;
-  
+    public bool CanSpawnMany = false;
+    private float timeTillNextSpawn = 0;
+    public float spawnBuffer = 2;
+
     public WallButtonTrigger wbTrigger;
     public GroundButtonTrigger gbTrigger;
 
@@ -35,10 +38,15 @@ public class ItemSpawnerController : MonoBehaviour
             isActivated = false;
         }
 
-        //Time to spawn a new item
-        if (curInstantiation == null && isActivated)
+        //Time to spawn a new item if it only does one
+        if (curInstantiation == null && isActivated && CanSpawnMany == false)
         {
             curInstantiation = Instantiate(prefabToSpawn, spawnVector, Quaternion.identity);
+        }
+        else if(CanSpawnMany == true && isActivated && Time.time > timeTillNextSpawn)
+        {
+            Instantiate(prefabToSpawn, spawnVector, Quaternion.identity);
+            timeTillNextSpawn = Time.time + spawnBuffer;
         }
     }
 }

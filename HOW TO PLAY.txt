@@ -1,0 +1,13 @@
+Try to Reach the Top
+
+Controls:
+
+WASD to move.
+
+Space to jump.
+
+Press E to pickup items.
+
+Press Q to Throw.
+
+Hold E next to the Purple Divider Wall to drag/push it.

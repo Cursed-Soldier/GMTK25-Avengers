@@ -50,8 +50,10 @@ public class PlayerObjectInteract : MonoBehaviour
                 //Rotate Spear
                 heldObject.transform.rotation = Quaternion.Euler(0f, 0f, spearDirection == 1 ? -90f : 90f);
 
-               
-                
+                //Set Spear to Not Held
+                heldObject.gameObject.GetComponentInChildren<SpearTipIBehavior>().isHeld = false;
+
+
             }
             playerVars.playThrowAudio();
             Vector2 throwDir = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
@@ -122,8 +124,8 @@ public class PlayerObjectInteract : MonoBehaviour
                         heldObject.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
                         heldObject.gameObject.GetComponent<PlatformEffector2D>().enabled = false;
                         heldObject.gameObject.GetComponent<Collider2D>().usedByEffector = false;
-
-                    }
+                        heldObject.gameObject.GetComponentInChildren<SpearTipIBehavior>().isHeld = true;
+                }
 
                     heldObject.transform.SetParent(holdPoint, true);
                     heldObject.transform.position = holdPoint.position;
@@ -137,10 +139,15 @@ public class PlayerObjectInteract : MonoBehaviour
     {
         if (heldObject != null)
         {
+            if(heldObject.gameObject.CompareTag("Spear"))
+            {
+                heldObject.gameObject.GetComponentInChildren<SpearTipIBehavior>().isHeld = false;
+            }
             heldObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             heldObject.transform.SetParent(null);
             heldObject = null;
             playerVars.isHoldingItem = false;
+            
         }
     }
 
