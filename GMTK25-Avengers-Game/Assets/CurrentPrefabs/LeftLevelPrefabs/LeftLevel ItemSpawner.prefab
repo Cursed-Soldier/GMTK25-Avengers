@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 4622498770314324365}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.14, y: -2, z: 0}
+  m_LocalPosition: {x: 0, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 2432759117806982441}
   - component: {fileID: 3128632293228658031}
   - component: {fileID: 2336696281296848602}
+  - component: {fileID: 8999827971733321442}
   m_Layer: 23
   m_Name: LeftLevel ItemSpawner
   m_TagString: Untagged
@@ -58,8 +59,8 @@ Transform:
   m_GameObject: {fileID: 7498613558728179989}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18.33589, y: 4.28609, z: 0}
-  m_LocalScale: {x: 1.6717016, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3964848285873304238}
@@ -109,8 +110,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 12cbda33c6b6b294e9766805cbc65e8b, type: 3}
-  m_Color: {r: 0.87871027, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 207085780836861793, guid: 037b9d3c5e29e4f428805daec7d7e92f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -137,3 +138,25 @@ MonoBehaviour:
   gbTrigger: {fileID: 0}
   prefabToSpawn: {fileID: 0}
   spawnPoint: {fileID: 4622498770314324365}
+--- !u!95 &8999827971733321442
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7498613558728179989}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 04432ac027fabab48a74a313a4123e2a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
