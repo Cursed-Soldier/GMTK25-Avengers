@@ -82,6 +82,14 @@ public class TestPlayerMovement : MonoBehaviour
 
         moveInput = Input.GetAxisRaw("Horizontal");
         anim.SetBool("Grounded", isGrounded);
+        if (transform.localScale.x == -1)
+        {
+            anim.SetFloat("FacingX", -1);
+        }
+        else
+        {
+            anim.SetFloat("FacingX", 1);
+        }
 
 
         //Flip Charecter based on direction
