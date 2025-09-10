@@ -2,11 +2,19 @@ using UnityEngine;
 
 public class TestPlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float MaxGroundSpeed;
+    public float MaxAirSpeed;
     public float dragSlowMultiplier = 0.5f;
     public float jumpForce = .02f;
     public Transform groundCheck;
     public float groundCheckRadius = .4f;
+    public float airAccel;
+    public float airDeccel;
+    public float groundAccel;
+    public float groundDeccel;
+
+
+
     private LayerMask whatIsGround;
     private float nextStepTime = 0;
 
@@ -62,22 +70,23 @@ public class TestPlayerMovement : MonoBehaviour
         if (jump && isGrounded)
         {
             jump = false;
-            anim.SetBool("Jump", jump);
+            anim.SetBool("Grounded", isGrounded);
             
         }
 
         // Jump when pressing space and grounded
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            var v = rb.linearVelocity;
+            v.y = jumpForce; 
+            rb.linearVelocity = v;
+
             playerVars.playJumpAudio();
             jump = true;
             anim.SetBool("Jump", jump);
-            //Debug.Log("jumping");
         }
 
-        
+
 
 
         moveInput = Input.GetAxisRaw("Horizontal");
@@ -111,16 +120,46 @@ public class TestPlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (playerVars.isMovingWall)
+        float dt = Time.fixedDeltaTime;
+
+        Vector2 v = rb.linearVelocity;
+
+        // Desired speed from input
+        float max = isGrounded ? MaxGroundSpeed : MaxAirSpeed;
+        float targetX = moveInput * max;
+        if (playerVars.isMovingWall) targetX *= dragSlowMultiplier;
+
+        if (isGrounded)
         {
-            rb.linearVelocity = new Vector2(moveInput * moveSpeed * dragSlowMultiplier, rb.linearVelocity.y);
+            // ON GROUND: instant stop / instant turn
+            if (Mathf.Abs(moveInput) < 0.01f)
+            {
+                v.x = 0f;                    // no slide when releasing input
+            }
+            else
+            {
+                v.x = targetX;               // snap immediately to the new direction/speed
+            }
         }
         else
         {
-            rb.linearVelocity = new Vector2(moveInput * moveSpeed, rb.linearVelocity.y);
-            anim.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
+            // IN AIR: reduced control, momentum carries
+            bool hasInput = Mathf.Abs(moveInput) > 0.01f;
+
+            if (hasInput)
+                v.x = Mathf.MoveTowards(v.x, targetX, airAccel * dt);
+            else
+                v.x = Mathf.MoveTowards(v.x, 0f, airDeccel * dt);
         }
+
+        // Never touch v.y here (gravity/jump handled elsewhere)
+        rb.linearVelocity = v;
+
+        // Animator drive from horizontal speed
+        anim.SetFloat("Speed", Mathf.Abs(v.x));
     }
 
 
-    }
+
+
+}

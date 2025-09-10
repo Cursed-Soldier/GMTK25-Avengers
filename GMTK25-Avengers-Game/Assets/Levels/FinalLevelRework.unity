@@ -456,6 +456,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9035729293228260642, guid: 636e598efd04df64ca8dae8ceaea1f94, type: 3}
+      propertyPath: airAccel
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035729293228260642, guid: 636e598efd04df64ca8dae8ceaea1f94, type: 3}
+      propertyPath: airDeccel
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035729293228260642, guid: 636e598efd04df64ca8dae8ceaea1f94, type: 3}
+      propertyPath: MaxAirSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035729293228260642, guid: 636e598efd04df64ca8dae8ceaea1f94, type: 3}
+      propertyPath: groundAccel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035729293228260642, guid: 636e598efd04df64ca8dae8ceaea1f94, type: 3}
+      propertyPath: groundDeccel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035729293228260642, guid: 636e598efd04df64ca8dae8ceaea1f94, type: 3}
+      propertyPath: MaxGroundSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
