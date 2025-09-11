@@ -27,14 +27,13 @@ public class BombBehavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Electric Wall"))
         {
-            Debug.Log("Hit Electric wall");
+            //anim.SetBool("Grounded", isGrounded);
             StartCoroutine(Explode());
         }
     }
     //Bomb will only explode if it passes through the wall and gets charged
     IEnumerator Explode()
     {
-        Debug.Log("started Explosion Courutine");
         //Change Sprite Here 
 
         //Wait

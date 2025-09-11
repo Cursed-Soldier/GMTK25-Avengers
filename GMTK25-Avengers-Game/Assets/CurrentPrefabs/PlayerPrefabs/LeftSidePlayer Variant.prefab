@@ -155,16 +155,56 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6680002539964237927}
     - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
+      propertyPath: MaxAirSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
+      propertyPath: carryFactor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
       propertyPath: groundAccel
       value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
+      propertyPath: groundSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
       propertyPath: groundDeccel
       value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
+      propertyPath: baseCarryTime
+      value: 0.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
+      propertyPath: MaxGroundSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
+      propertyPath: maxCarryFactor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
+      propertyPath: minCarryFactor
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
+      propertyPath: initialCarryTime
+      value: 0.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
+      propertyPath: extendedCarryTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
       propertyPath: groundCheckRadius
-      value: 0.1
+      value: 0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
+      propertyPath: boostSpeedThreshold
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3883262833844483719, guid: 44f2b384243cde940b980ae49264cd90, type: 3}
       propertyPath: whatIsGround.m_Bits
@@ -362,10 +402,9 @@ MonoBehaviour:
   throwSoundEffect: {fileID: 8300000, guid: 42a8dfbd28e621e4eb8004c60aab381c, type: 3}
   MaxStepAudioSize: 0.2
   stepSoundEffects:
-  - {fileID: 8300000, guid: c403d90f5f1219f4a93c3ecd8d5883f1, type: 3}
-  - {fileID: 8300000, guid: 67c3500e42074654493b0b027f2555e6, type: 3}
-  - {fileID: 8300000, guid: 67db914eac8e9b64f874a13c5cecb75d, type: 3}
-  - {fileID: 8300000, guid: 00ce8d181cb1275439310334dceb2ff0, type: 3}
+  - {fileID: 8300000, guid: 1013b7cea7d42ea4fa31418d4d651dc4, type: 3}
+  - {fileID: 8300000, guid: 55befa2e024820d4b91f74cd09d8c7e5, type: 3}
+  - {fileID: 8300000, guid: 5f94b266e06509246957ae10da6e5c15, type: 3}
 --- !u!82 &786170360382444082
 AudioSource:
   m_ObjectHideFlags: 0

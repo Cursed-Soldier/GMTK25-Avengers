@@ -412,6 +412,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6680002539964237927, guid: 636e598efd04df64ca8dae8ceaea1f94, type: 3}
+      propertyPath: MaxStepAudioSize
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7420374595605584067, guid: 636e598efd04df64ca8dae8ceaea1f94, type: 3}
       propertyPath: m_Name
       value: LeftSidePlayer Variant
@@ -2779,7 +2783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &494577153
 Transform:
   m_ObjectHideFlags: 0
@@ -5903,7 +5907,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1077736425}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51f93532c8bb0864fbba6c5c564f138b, type: 3}
   m_Name: 
@@ -8873,7 +8877,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1744522596
 RectTransform:
   m_ObjectHideFlags: 0
