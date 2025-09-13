@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerGrabLightWallControler : MonoBehaviour
 {
@@ -6,24 +7,25 @@ public class PlayerGrabLightWallControler : MonoBehaviour
     private WallOfLightController currentWall;
     public PlayerVariables playerVars;
 
+
     //While e is pressed and there is no item held and a currentwall is avaible starts moving the wall
-    void Update()
+    public void grabWall(InputAction.CallbackContext IcallBack)
     {
-        if (Input.GetKeyDown(KeyCode.E) && currentWall != null && playerVars.isHoldingItem == false && playerVars.isMovingWall == false)
+        if (IcallBack.started && currentWall != null && playerVars.isHoldingItem == false && playerVars.isMovingWall == false)
         {
             playerVars.isMovingWall = true;
             playerVars.playDragAudio();
-            currentWall.StartDragging(transform); 
+            currentWall.StartDragging(transform);
         }
 
-        if (Input.GetKeyUp(KeyCode.E) && currentWall != null && playerVars.isHoldingItem == false)
+        if (IcallBack.canceled && currentWall != null && playerVars.isHoldingItem == false)
         {
             playerVars.isMovingWall = false;
             playerVars.stopAudio();
             currentWall.StopDragging();
         }
     }
-
+    
     //determines if the player can grab onto some part of the wall
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -39,9 +41,12 @@ public class PlayerGrabLightWallControler : MonoBehaviour
         if (other.CompareTag("GrabPointTrigger"))
         {
             if (currentWall != null)
+            {
                 currentWall.StopDragging();
-
-            currentWall = null;
+                playerVars.isMovingWall = false;
+                playerVars.stopAudio();
+                currentWall = null;
+            }
         }
     }
 
