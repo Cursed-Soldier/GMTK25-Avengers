@@ -469,6 +469,10 @@ PrefabInstance:
       value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 9035729293228260642, guid: 636e598efd04df64ca8dae8ceaea1f94, type: 3}
+      propertyPath: isGrounded
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035729293228260642, guid: 636e598efd04df64ca8dae8ceaea1f94, type: 3}
       propertyPath: MaxAirSpeed
       value: 4
       objectReference: {fileID: 0}
@@ -483,6 +487,10 @@ PrefabInstance:
     - target: {fileID: 9035729293228260642, guid: 636e598efd04df64ca8dae8ceaea1f94, type: 3}
       propertyPath: MaxGroundSpeed
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035729293228260642, guid: 636e598efd04df64ca8dae8ceaea1f94, type: 3}
+      propertyPath: fallingAnimBuffer
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

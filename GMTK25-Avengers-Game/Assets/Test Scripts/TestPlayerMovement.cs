@@ -1,7 +1,12 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TestPlayerMovement : MonoBehaviour
 {
+    //Control Inputs
+    private Vector2 moveInput;
+    private bool jumpInput = false;
+
     // Movement tuning
     public float groundSpeed = 8f;
     public float MaxAirSpeed = 6.5f;
@@ -36,9 +41,29 @@ public class TestPlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Animator anim;
 
-    private float moveInput;
+    private float fallingAnimTimer = 0;
+    public float fallingAnimBuffer = .5f;
+    public bool fallTimerActive = false;
+
     [SerializeField] private bool isGrounded;
     public PlayerVariables playerVars;
+
+    public void Move(InputAction.CallbackContext IcallBack)
+    {
+        moveInput = IcallBack.ReadValue<Vector2>();
+    }
+
+    public void Jump(InputAction.CallbackContext IcallBack)
+    {
+        if (IcallBack.performed)
+        {
+            jumpInput = true;
+        }
+        else
+        {
+            jumpInput = false;
+        }
+    }
 
     void Start()
     {
@@ -48,6 +73,8 @@ public class TestPlayerMovement : MonoBehaviour
 
     void Update()
     {
+        float rt = Time.time;
+
         // --- Ground check (layer-aware) ---
         // Keep radius modest; large values cause false positives on walls/ledges.
         if (gameObject.layer == LayerMask.NameToLayer("RightSidePlayer"))
@@ -63,8 +90,14 @@ public class TestPlayerMovement : MonoBehaviour
                 isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, LayerMask.GetMask("LeftSideThrowable"));
         }
 
+        //Reset falling anim timer 
+        if(isGrounded)
+        {
+            fallTimerActive = false;
+        }
+
         // --- Jump input (preserve horizontal, set vertical only) ---
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        if (jumpInput == true && isGrounded)
         {
             var v = rb.linearVelocity;
             v.y = jumpForce;
@@ -97,14 +130,13 @@ public class TestPlayerMovement : MonoBehaviour
             if (playerVars != null) playerVars.playJumpAudio();
         }
 
-        // --- Input cache for physics step ---
-        moveInput = Input.GetAxisRaw("Horizontal");
+        
 
         // --- Facing via scale ---
-        if (Mathf.Abs(moveInput) > 0.01f && (playerVars == null || playerVars.isMovingWall == false))
+        if (Mathf.Abs(moveInput.x) > 0.01f && (playerVars == null || playerVars.isMovingWall == false))
         {
             var s = transform.localScale;
-            float sign = Mathf.Sign(moveInput);
+            float sign = Mathf.Sign(moveInput.x);
             transform.localScale = new Vector3(Mathf.Abs(s.x) * sign, s.y, s.z);
         }
         float facingSign = Mathf.Sign(transform.localScale.x);
@@ -119,7 +151,19 @@ public class TestPlayerMovement : MonoBehaviour
         //bool jumpingUp = vy > 0.05f;
 
         // Falling only when in air and descending
-        bool falling = !isGrounded && vy < -0.05f;
+        if (fallTimerActive == false && vy < -.05f)
+        {
+            //Debug.Log("Should be starting fall timer");
+            fallingAnimTimer = rt + fallingAnimBuffer;
+            fallTimerActive = true;
+        }
+
+        if(!isGrounded && vy < -0.05f && fallTimerActive && fallingAnimTimer <= rt)
+        {
+            Debug.Log("Falling animation should be showing");
+        }
+
+        bool falling = !isGrounded && vy < -0.05f && fallTimerActive && fallingAnimTimer <= rt;
 
         //anim.SetBool("Jump", jumpingUp);
         anim.SetBool("Falling", falling);
@@ -144,7 +188,7 @@ public class TestPlayerMovement : MonoBehaviour
 
         // Target horizontal speed from input
         float max = isGrounded ? groundSpeed : MaxAirSpeed;
-        float targetX = moveInput * max;
+        float targetX = moveInput.x * max;
         if (playerVars != null && playerVars.isMovingWall) targetX *= dragSlowMultiplier;
 
         // Launch-carry bias (air only): blend targetX toward carryX while timer runs
@@ -164,13 +208,13 @@ public class TestPlayerMovement : MonoBehaviour
         // Ground: instant stop/turn, no slide
         if (isGrounded)
         {
-            if (Mathf.Abs(moveInput) < 0.01f) v.x = 0f;
+            if (Mathf.Abs(moveInput.x) < 0.01f) v.x = 0f;
             else v.x = targetX;
         }
         else
         {
             // Air: momentum-based. Input steers gradually; no input keeps momentum.
-            bool hasInput = Mathf.Abs(moveInput) > 0.01f;
+            bool hasInput = Mathf.Abs(moveInput.x) > 0.01f;
 
             if (hasInput)
                 v.x = Mathf.MoveTowards(v.x, targetX, airAccel * dt);

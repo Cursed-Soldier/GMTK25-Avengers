@@ -1,7 +1,12 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerObjectInteract : MonoBehaviour
 {
+    //Control Inputs
+    bool Interacting = false;
+    bool Throwing = false;
+
     public Transform holdPoint; // Empty GameObject where held item will stay
     public float pickupRange = 1.5f;
     public LayerMask leftSidepickupLayer;
@@ -14,55 +19,39 @@ public class PlayerObjectInteract : MonoBehaviour
     [HideInInspector]
     public ThrowableInteraction heldObject;
 
+    public void registerPlayerInteract(InputAction.CallbackContext IcallBack)
+    {
+        if (IcallBack.performed)
+        {
+            if (heldObject == null && playerVars.isMovingWall != true)
+            {
+                TryPickup();
+            }
+            else
+            {
+                Drop();
+            }
+        }
+   
+    }
+
+    public void registerThrow(InputAction.CallbackContext IcallBack)
+    {
+        if (IcallBack.performed && heldObject != null)
+        {
+            ThrowObject();
+        }
+    }
+
     void Update()
     {
+        //Reste the point where the item is held
         if (heldObject == null && holdPointIsExtended == true)
         {
             holdPointIsExtended=false;
             Vector3 pos = holdPoint.transform.position;
             pos.x -= heldObjectExtendAmount;
             holdPoint.transform.position = pos;
-        }
-        //Try to pick up Object
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (heldObject == null && playerVars.isMovingWall != true)
-                TryPickup();
-            else
-                Drop();
-        }
-
-        //Throw Object
-        if (Input.GetKeyDown(KeyCode.Q) && heldObject != null)
-        {
-            if (heldObject.gameObject.CompareTag("Spear"))
-            {
-                //Set colliders to ignore each other
-                /*Collider2D spearCollider = heldObject.gameObject.GetComponent<Collider2D>();
-                Collider2D playerCollider = gameObject.GetComponent<Collider2D>();
-                Physics2D.IgnoreCollision(spearCollider, playerCollider, true);*/
-
-                float spearDirection = Mathf.Sign(transform.localScale.x);
-                float spearOffset = heldObject.gameObject.GetComponent<ThrowableInteraction>().SpearThrowExtendAmount;
-                Vector2 offset = new Vector2(spearDirection * spearOffset, 0f);
-                heldObject.transform.position += (Vector3)offset;
-
-                //Rotate Spear
-                heldObject.transform.rotation = Quaternion.Euler(0f, 0f, spearDirection == 1 ? -90f : 90f);
-
-                //Set Spear to Not Held
-                heldObject.gameObject.GetComponentInChildren<SpearTipIBehavior>().isHeld = false;
-
-
-            }
-            playerVars.playThrowAudio();
-            Vector2 throwDir = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
-            heldObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            heldObject.Throw(throwDir);
-            //Fix scaling
-            heldObject.transform.localScale = heldObject.originalScale;
-            heldObject = null;
-            playerVars.isHoldingItem = false;
         }
     }
 
@@ -133,6 +122,38 @@ public class PlayerObjectInteract : MonoBehaviour
                     break;
                 }
             }
+    }
+
+    void ThrowObject()
+    {
+        if (heldObject.gameObject.CompareTag("Spear"))
+        {
+            //Set colliders to ignore each other
+            /*Collider2D spearCollider = heldObject.gameObject.GetComponent<Collider2D>();
+            Collider2D playerCollider = gameObject.GetComponent<Collider2D>();
+            Physics2D.IgnoreCollision(spearCollider, playerCollider, true);*/
+
+            float spearDirection = Mathf.Sign(transform.localScale.x);
+            float spearOffset = heldObject.gameObject.GetComponent<ThrowableInteraction>().SpearThrowExtendAmount;
+            Vector2 offset = new Vector2(spearDirection * spearOffset, 0f);
+            heldObject.transform.position += (Vector3)offset;
+
+            //Rotate Spear
+            heldObject.transform.rotation = Quaternion.Euler(0f, 0f, spearDirection == 1 ? -90f : 90f);
+
+            //Set Spear to Not Held
+            heldObject.gameObject.GetComponentInChildren<SpearTipIBehavior>().isHeld = false;
+
+
+        }
+        playerVars.playThrowAudio();
+        Vector2 throwDir = transform.localScale.x > 0 ? Vector2.right : Vector2.left;
+        heldObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        heldObject.Throw(throwDir);
+        //Fix scaling
+        heldObject.transform.localScale = heldObject.originalScale;
+        heldObject = null;
+        playerVars.isHoldingItem = false;
     }
 
     void Drop()
